@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* For fixed header */
+    font-family: 'Inter', system-ui, sans-serif;
+    width: 100%;  /* Ensure full width */
+    margin: 0;    /* Ensure no margin */
+  }
+
+  body {
+    margin: 0; /* Remove default margin */
+    background-color: #F5F5F5; /* Light Gray background */
+    color: #4B4F58; /* Dark Gray text */
+    @apply dark:bg-gray-900 dark:text-gray-100;
+    width: 100%;  /* Ensure full width */
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight leading-tight mb-4 text-primary; /* Primary color for headings */
+  }
+
+  p {
+    @apply leading-relaxed text-dark-gray dark:text-gray-300 mb-4; /* Dark Gray text */
+  }
+}
+
+.hero {
+  background: linear-gradient(to bottom right, #1E3A8A, #3B9D9F); /* Primary to Secondary gradient */
+  color: #ffffff;
+  padding: 40px;
+  width: 100%; /* Make sure the hero section stretches full width */
+}
+
+button:hover {
+  background-color: #00B68F; /* Accent Green for buttons on hover */
+}
+
+/* Tailwind Custom Classes */
+@layer base {
+  .bg-primary { background-color: #1E3A8A; }
+  .text-primary { color: #1E3A8A; }
+}
+
+/* Ensure root div stretches full width */
+#root {
+  width: 100%;
+}
