@@ -54,12 +54,9 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
             <div className="flex flex-col space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
-                <span>123 Engineering St, Tech City, USA 12345</span>
+                <span>Regus Platinum, Platinum Techno Park, Sector 30A, Navi Mumbai-400705</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <a href="tel:+11234567890" className="hover:text-blue-400 transition-colors">+1-123-456-7890</a>
-              </div>
+              
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <a href="mailto:info@kleosengineering.com" className="hover:text-blue-400 transition-colors">info@kleosengineering.com</a>
