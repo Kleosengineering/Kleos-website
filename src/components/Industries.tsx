@@ -1,6 +1,11 @@
 import React from 'react';
 import { Droplets, Pill, Coffee, Factory, Wind, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import oilIMAGE from "../../constants/oil&gas.jpg"
+import pharmaceuticalsIMAGE from "../../constants/pharma.jpg"
+import wasteWaterIMAGE from "../../constants/water-waste.jpg"
+import manufracturingIMAGE from "../../constants/manufacturing.jpg"
+
 
 const Industries: React.FC = () => {
   const heroImage = 'https://images.unsplash.com/photo-1506629083149-d072d3067bf4?auto=format&fit=crop&q=80'; // Industrial engineering background
@@ -17,7 +22,7 @@ const Industries: React.FC = () => {
         'Enhanced safety through advanced stress analysis.',
       ],
       caseStudy: 'Streamlined piping design for a Middle East refinery, cutting costs by 12% while meeting strict safety standards.',
-      image: 'https://images.unsplash.com/photo-1519330281431-c0696d7f8c7f?auto=format&fit=crop&q=80',
+      image: oilIMAGE,
       alt: 'Oil and gas refinery engineering',
     },
     {
@@ -31,7 +36,7 @@ const Industries: React.FC = () => {
         'Scalable solutions for rapid production scaling.',
       ],
       caseStudy: 'Designed a GMP-compliant cleanroom for a vaccine production facility, ensuring regulatory approval in record time.',
-      image: 'https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&q=80',
+      image: pharmaceuticalsIMAGE,
       alt: 'Pharmaceutical manufacturing facility',
     },
     {
@@ -59,7 +64,7 @@ const Industries: React.FC = () => {
         'Reliable systems for long-term performance.',
       ],
       caseStudy: 'Developed a wastewater treatment system for a municipality, reducing energy consumption by 15%.',
-      image: 'https://images.unsplash.com/photo-1613005798967-6329534dc894?auto=format&fit=crop&q=80',
+      image: wasteWaterIMAGE,
       alt: 'Water treatment plant engineering',
     },
     {
@@ -73,7 +78,7 @@ const Industries: React.FC = () => {
         'Reduced downtime with robust system integration.',
       ],
       caseStudy: 'Implemented automation for an automotive parts manufacturer, boosting productivity by 25%.',
-      image: 'https://images.unsplash.com/photo-1581092160607-36e7d8f8f9b3?auto=format&fit=crop&q=80',
+      image: manufracturingIMAGE,
       alt: 'Manufacturing facility optimization',
     },
   ];
@@ -82,7 +87,7 @@ const Industries: React.FC = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section
-        className="relative h-[50vh] bg-cover bg-center flex items-center justify-center text-center"
+        className="relative h-[75vh] bg-cover bg-center flex items-center justify-center text-center"
         style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url(${heroImage})` }}
       >
         <motion.div
@@ -172,30 +177,36 @@ const Industries: React.FC = () => {
         </section>
       ))}
 
-      {/* CTA Section */}
-      <section className="py-24 bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Your Industry, Our Expertise</h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+
+      <div className='max-w-7xl mx-auto py-24 '>
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="relative  py-16 px-4 rounded-3xl sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900 to-blue-700 text-white"
+        >
+          <div
+            className="absolute  inset-0 opacity-10"
+
+          />
+          <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+            <h3 className="text-4xl sm:text-4xl font-bold text-white">Your Industry, Our Expertise</h3>
+            <p className="text-lg sm:text-xl text-gray-100 leading-relaxed">
               Not seeing your industry? Our adaptable solutions tackle unique challenges. Contact us to discuss your needs.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
+              className="inline-block px-8 py-3 bg-white text-blue-900 font-semibold rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label="Contact Kleos Engineering"
             >
               Get in Touch
-              <ArrowRight className="ml-3 h-5 w-5" />
             </a>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </motion.section>
+      </div>
+
+
     </div>
   );
 };

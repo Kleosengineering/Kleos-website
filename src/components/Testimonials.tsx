@@ -72,7 +72,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="text-center mt-16">
-          <a href="#contact" className="bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-green transition-colors">
+          <a href="/contact" className="bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-green transition-colors">
             Share Your Success Story
           </a>
         </div>

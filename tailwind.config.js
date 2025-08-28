@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1E3A8A',  // Deep Blue for main elements
+        primary: '##1e3a8a',  // Deep Blue for main elements
         secondary: '#3B9D9F', // Teal for secondary accents
         'light-gray': '#F5F5F5', // Light Gray for backgrounds
         'dark-gray': '#4B4F58', // Dark Gray for text

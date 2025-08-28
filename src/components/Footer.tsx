@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Settings, Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logo from "../../constants/logo-light.png";
 
 interface FooterProps {
   activeSection: string;
@@ -38,22 +39,21 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
       className="bg-gray-900 text-gray-300 py-12"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-center md:items-start space-y-4">
             <Link
               to="/"
-              className="flex items-center space-x-2 mb-4"
+              className="flex items-center space-x-2"
               onClick={() => setActiveSection('home')}
               aria-label="Kleos Engineering Homepage"
             >
-              <Settings className="h-8 w-8 text-blue-500" />
-              <span className="text-xl font-bold text-white">Kleos Engineering</span>
+              <img src={logo} alt="Kleos Engineering Logo" width={150} />
             </Link>
-            <p className="text-sm text-center md:text-left mb-4">
+            <p className="text-sm text-center md:text-left">
               Delivering precision engineering solutions for global industries.
             </p>
-            <div className="flex flex-col items-center md:items-start space-y-1 text-sm">
+            <div className="flex flex-col space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
                 <span>123 Engineering St, Tech City, USA 12345</span>
@@ -70,17 +70,16 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link
                   key={item.id}
                   to={item.path}
                   onClick={() => setActiveSection(item.id)}
-                  className={`text-sm transition-colors hover:text-blue-400 ${
-                    activeSection === item.id ? 'text-blue-400 font-semibold' : 'text-gray-300'
-                  }`}
+                  className={`text-sm transition-colors hover:text-blue-400 ${activeSection === item.id ? 'text-blue-400 font-semibold' : 'text-gray-300'
+                    }`}
                   aria-current={activeSection === item.id ? 'page' : undefined}
                 >
                   {item.label}
@@ -90,8 +89,8 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
           </div>
 
           {/* Resources */}
-          <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <h3 className="text-lg font-semibold text-white">Resources</h3>
             <nav className="flex flex-col space-y-2">
               {resources.map((item) => (
                 <Link
@@ -106,8 +105,8 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
           </div>
 
           {/* Social & Connect */}
-          <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-semibold text-white mb-4">Connect With Us</h3>
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <h3 className="text-lg font-semibold text-white">Connect With Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((item, index) => (
                 <a

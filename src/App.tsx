@@ -9,6 +9,8 @@ import Hero from './components/Hero';
 import TrustBadges from './components/TrustBadges';
 import HowWeWork from './components/HowWeWork';
 import Testimonials from './components/Testimonials';
+import AboutPage from './components/AboutPage';
+import HomeServices from './components/homeSerivces'; // Corrected import name
 
 // Lazy-loaded components
 const Services = React.lazy(() => import('./components/Services'));
@@ -97,80 +99,79 @@ const App: React.FC = () => {
           <link rel="canonical" href="https://www.kleosengineering.com" />
           <script type="application/ld+json">
             {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Kleos Engineering",
-              url: "https://www.kleosengineering.com",
-              logo: "https://www.kleosengineering.com/logo.png",
-              description: "India-based startup providing precision engineering services globally.",
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Kleos Engineering',
+              url: 'https://www.kleosengineering.com',
+              logo: 'https://www.kleosengineering.com/logo.png',
+              description: 'India-based startup providing precision engineering services globally.',
               address: {
-                "@type": "PostalAddress",
-                addressCountry: "IN",
-                postalCode: "Your ZIP",
-                streetAddress: "Your Address",
+                '@type': 'PostalAddress',
+                addressCountry: 'IN',
+                postalCode: 'Your ZIP',
+                streetAddress: 'Your Address',
               },
               contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+91-Your-Number",
-                contactType: "customer service",
-                availableLanguage: "English",
+                '@type': 'ContactPoint',
+                telephone: '+91-Your-Number',
+                contactType: 'customer service',
+                availableLanguage: 'English',
               },
               sameAs: ['https://www.linkedin.com/company/kleosengineering', 'https://twitter.com/kleoseng'],
             })}
           </script>
         </Helmet>
 
-        <ErrorBoundary>
-          <ScrollToTop />
-          <Header
-            activeSection={activeSection}
-            setActiveSection={(section: string) => {
-              setActiveSection(section);
-              navigate(section === 'home' ? '/' : `/${section}`);
-            }}
-          />
-          <main id="main-content" tabIndex={-1} className="outline-none flex-grow">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={location.pathname}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+        <ScrollToTop />
+        <Header
+          activeSection={activeSection}
+          setActiveSection={(section: string) => {
+            setActiveSection(section);
+            navigate(section === 'home' ? '/' : `/${section}`);
+          }}
+        />
+        <main id="main-content" tabIndex={-1} className="outline-none flex-grow">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Suspense
+                fallback={
+                  <div className="py-24 text-center bg-light-gray dark:bg-gray-800">
+                    <div className="animate-pulse text-xl text-dark-gray dark:text-gray-300">Loading...</div>
+                  </div>
+                }
               >
-                <Suspense
-                  fallback={
-                    <div className="py-24 text-center bg-light-gray dark:bg-gray-800">
-                      <div className="animate-pulse text-xl text-dark-gray dark:text-gray-300">Loading...</div>
-                    </div>
-                  }
-                >
-                  <Routes>
-                    <Route
-                      path="/"
-                      element={
-                        <>
-                          <Hero />
-                          <TrustBadges />
-                          <Services />
-                          <HowWeWork />
-                          <Testimonials />
-                          <Industries />
-                        </>
-                      }
-                    />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/industries" element={<Industries />} />
-                    <Route path="/careers" element={<Careers />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="*" element={<h1 className="py-24 text-center text-4xl font-bold text-primary">404 - Not Found</h1>} />
-                  </Routes>
-                </Suspense>
-              </motion.div>
-            </AnimatePresence>
-          </main>
-          <Footer />
-        </ErrorBoundary>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <Hero />
+                        <TrustBadges />
+                        <HomeServices />
+
+                        <HowWeWork />
+                        <Testimonials />
+                      </>
+                    }
+                  />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/industries" element={<Industries />} />
+                  <Route path="/careers" element={<Careers />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="*" element={<h1 className="py-24 text-center text-4xl font-bold text-primary">404 - Not Found</h1>} />
+                </Routes>
+              </Suspense>
+            </motion.div>
+          </AnimatePresence>
+        </main>
+        <Footer />
       </div>
     </HelmetProvider>
   );
