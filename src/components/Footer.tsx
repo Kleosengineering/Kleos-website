@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
               onClick={() => setActiveSection('home')}
               aria-label="Kleos Engineering Homepage"
             >
-              <img src={logo} alt="Kleos Engineering Logo" width={250} />
+              <img src={logo} alt="Kleos Engineering Logo" width={275} />
             </Link>
             
             <div className="flex flex-col space-y-2 text-sm">
