@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Settings, Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
-import logo from "../../constants/logo-light.png";
+import logo from "../../constants/logo2.png";
 
 interface FooterProps {
   activeSection: string;
@@ -48,11 +48,9 @@ const Footer: React.FC<FooterProps> = React.memo(({ activeSection, setActiveSect
               onClick={() => setActiveSection('home')}
               aria-label="Kleos Engineering Homepage"
             >
-              <img src={logo} alt="Kleos Engineering Logo" width={150} />
+              <img src={logo} alt="Kleos Engineering Logo" width={250} />
             </Link>
-            <p className="text-sm text-center md:text-left">
-              Delivering precision engineering solutions for global industries.
-            </p>
+            
             <div className="flex flex-col space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" />
