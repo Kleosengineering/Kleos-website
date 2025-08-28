@@ -7,6 +7,8 @@ import {
     Rocket, Star,
     Users
 } from 'lucide-react';
+import heroImage from "../../constants/about.jpg"
+
 
 const AboutPage: React.FC = () => {
     return (
@@ -14,17 +16,19 @@ const AboutPage: React.FC = () => {
             {/* Hero Section with Parallax */}
             <section
                 className="relative min-h-[75vh] overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, hsl(224 65% 33%), hsl(224 65% 50%))' }}
+                style={{
+                    background: `linear-gradient(135deg,  hsl(224 15% 18% / 0.7), hsl(228 65% 20% / 0.7)), url(${heroImage}) center/cover no-repeat`,
+                }}
             >
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0">
                     <div
                         className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl animate-pulse"
-                        style={{ background: 'hsl(224 65% 50% / 0.2)' }}
+                        style={{ background: 'hsl(224 65% 40% / 0.3)' }}
                     />
                     <div
                         className="absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000"
-                        style={{ background: 'hsl(224 65% 50% / 0.2)' }}
+                        style={{ background: 'hsl(224 65% 40% / 0.3)' }}
                     />
                 </div>
 
@@ -47,33 +51,29 @@ const AboutPage: React.FC = () => {
                             }}
                         >
                             <Building2 className="w-5 h-5" style={{ color: 'hsl(0 0% 100%)' }} />
-                            <span className="font-medium" style={{ color: 'hsl(0 0% 100%)' }}>
+                            <span className="font-medium" style={{ color: 'hsl(0 0% 100%)', textShadow: '0 0 8px rgba(0, 0, 0, 0.5)' }}>
                                 About Kleos Engineering
                             </span>
                         </motion.div>
 
                         <h1
                             className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
-                            style={{ color: 'hsl(0 0% 100%)' }}
+                            style={{ color: 'hsl(0 0% 100%)', textShadow: '0 0 8px rgba(0, 0, 0, 0.5)' }}
                         >
                             Engineering Precision.
-                            <span
-                                className="block bg-clip-text "
-                            >
+                            <span className="block bg-clip-text">
                                 Powering Innovation.
                             </span>
                         </h1>
 
                         <p
                             className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
-                            style={{ color: 'hsl(0 0% 100%)' }}
-
+                            style={{ color: 'hsl(0 0% 100%)', textShadow: '0 0 8px rgba(0, 0, 0, 0.5)' }}
                         >
                             At Kleos Engineering, we design, build, and optimize engineering systems with accuracy and innovation,
                             delivering reliable solutions tailored to industries worldwide.
                         </p>
                     </motion.div>
-
                 </div>
             </section>
 

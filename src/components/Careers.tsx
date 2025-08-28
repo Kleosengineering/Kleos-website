@@ -1,9 +1,14 @@
 import React from 'react';
 import { TrendingUp, Award, Briefcase, Users, Globe2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import growthImage from "../../constants/growth.jpg"
+import focusImage from "../../constants/focus.jpg"
+import diversityImage from "../../constants/diversity.jpg"
+import heroImage1 from "../../constants/innovation-focus1.jpg"
+
 
 const Careers: React.FC = React.memo(() => {
-  const heroImage = 'https://plus.unsplash.com/premium_photo-1756181211629-a024a0154173?q=80&w=1496&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  const heroImage = heroImage1;
 
   const benefits = [
     {
@@ -17,7 +22,7 @@ const Careers: React.FC = React.memo(() => {
       Icon: TrendingUp,
       title: 'Professional Growth',
       description: 'Advance your skills with hands-on training in CAD, FEA, and advanced simulation tools.',
-      image: 'https://images.unsplash.com/photo-1516321310762-7f54c77973b6?auto=format&fit=crop&q=80',
+      image: growthImage,
       alt: 'Engineer training session',
     },
     {
@@ -31,7 +36,7 @@ const Careers: React.FC = React.memo(() => {
       Icon: Award,
       title: 'Innovation Focus',
       description: 'Lead R&D and contribute to groundbreaking projects shaping the future of global engineering.',
-      image: 'https://images.unsplash.com/photo-1531482615713-2afd674bf4ac?auto=format&fit=crop&q=80',
+      image: focusImage,
       alt: 'Engineering innovation lab',
     },
   ];
@@ -262,12 +267,12 @@ const Careers: React.FC = React.memo(() => {
               className="relative h-96 rounded-3xl overflow-hidden shadow-2xl transform -rotate-3"
             >
               <img
-                src="https://images.unsplash.com/photo-1519337265831-4f1d0b8b7a73?auto=format&fit=crop&q=80"
+                src={diversityImage}
                 alt="Diverse team collaboration"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 " />
             </motion.div>
           </motion.div> {/* ✅ FIXED: Proper closing */}
         </div>

@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import asBuiltImage from '../../constants/t-t1.png';
 import toolsImage from "../../constants/technology.jpg"
 import pipingImage from "../../constants/powerplant.jpg"
+import heroImage1 from "../../constants/services1.jpg"
+
 const Services: React.FC = () => {
   const [expandedService, setExpandedService] = useState<string | null>(null);
 
-  const heroImage = 'https://images.unsplash.com/photo-1498050108023-c52474f90263?auto=format&fit=crop&q=80&w=1920';
+  const heroImage = heroImage1;
 
   const services = [
     {

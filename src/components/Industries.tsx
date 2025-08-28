@@ -5,10 +5,12 @@ import oilIMAGE from "../../constants/oil&gas.jpg"
 import pharmaceuticalsIMAGE from "../../constants/pharma.jpg"
 import wasteWaterIMAGE from "../../constants/water-waste.jpg"
 import manufracturingIMAGE from "../../constants/manufacturing.jpg"
+import heroImage1 from "../../constants/services.jpg"
+import foodImage1 from "../../constants/automated-systems-food-factory_198067-1188439.jpg"
 
 
 const Industries: React.FC = () => {
-  const heroImage = 'https://images.unsplash.com/photo-1506629083149-d072d3067bf4?auto=format&fit=crop&q=80'; // Industrial engineering background
+  const heroImage = heroImage1; // Industrial engineering background
 
   const industries = [
     {
@@ -50,7 +52,7 @@ const Industries: React.FC = () => {
         'Compliance with FDA and HACCP standards.',
       ],
       caseStudy: 'Revamped a beverage production line, increasing output by 20% while maintaining hygiene standards.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80',
+      image: foodImage1,
       alt: 'Food and beverage production line',
     },
     {
