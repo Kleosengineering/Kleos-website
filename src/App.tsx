@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
@@ -10,14 +11,13 @@ import TrustBadges from './components/TrustBadges';
 import HowWeWork from './components/HowWeWork';
 import Testimonials from './components/Testimonials';
 import AboutPage from './components/AboutPage';
-import HomeServices from './components/homeSerivces'; // Corrected import name
+import HomeServices from './components/homeSerivces';
 
-// Lazy-loaded components
 const Services = React.lazy(() => import('./components/Services'));
 const Industries = React.lazy(() => import('./components/Industries'));
 const Careers = React.lazy(() => import('./components/Careers'));
 
-// Error Boundary Component
+// ErrorBoundary and ScrollToTop components remain unchanged
 class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
   state = { hasError: false };
 
@@ -51,7 +51,6 @@ class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { has
   }
 }
 
-// Scroll to Top Component
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -131,47 +130,55 @@ const App: React.FC = () => {
           }}
         />
         <main id="main-content" tabIndex={-1} className="outline-none flex-grow">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Suspense
-                fallback={
-                  <div className="py-24 text-center bg-light-gray dark:bg-gray-800">
-                    <div className="animate-pulse text-xl text-dark-gray dark:text-gray-300">Loading...</div>
-                  </div>
-                }
+          <ErrorBoundary>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
               >
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <>
-                        <Hero />
-                        <TrustBadges />
-                        <HomeServices />
-
-                        <HowWeWork />
-                        <Testimonials />
-                      </>
-                    }
-                  />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/industries" element={<Industries />} />
-                  <Route path="/careers" element={<Careers />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="*" element={<h1 className="py-24 text-center text-4xl font-bold text-primary">404 - Not Found</h1>} />
-                </Routes>
-              </Suspense>
-            </motion.div>
-          </AnimatePresence>
+                <Suspense
+                  fallback={
+                    <div className="py-24 text-center bg-light-gray dark:bg-gray-800">
+                      <div className="animate-pulse text-xl text-dark-gray dark:text-gray-300">Loading...</div>
+                    </div>
+                  }
+                >
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <>
+                          <Hero />
+                          <TrustBadges />
+                          <HomeServices />
+                          <HowWeWork />
+                          <Testimonials />
+                        </>
+                      }
+                    />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/industries" element={<Industries />} />
+                    <Route path="/careers" element={<Careers />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="*" element={<h1 className="py-24 text-center text-4xl font-bold text-primary">404 - Not Found</h1>} />
+                  </Routes>
+                </Suspense>
+              </motion.div>
+            </AnimatePresence>
+          </ErrorBoundary>
         </main>
-        <Footer />
+        <Footer
+          activeSection={activeSection}
+          setActiveSection={(section: string) => {
+            setActiveSection(section);
+            navigate(section === 'home' ? '/' : `/${section}`);
+          }}
+        />
+        <Analytics />
       </div>
     </HelmetProvider>
   );
